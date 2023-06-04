@@ -6,6 +6,7 @@
 \usepackage{pgf,tikz,pgfplots}
 \usepackage{wrapfig,graphicx}
 \usepackage{fancyhdr}
+\usepackage{array}
 \usepackage{multirow,multicol,enumitem}
 \usepackage[top=2.5cm, bottom=2cm, left=2.2cm, right=1.5cm]{geometry}
 
@@ -38,13 +39,24 @@
 \renewcommand{\headruleskip}{0.6cm}
 \renewcommand{\footruleskip}{0cm}
 
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+
+
+
 \begin{document}
 
 \pagestyle{fancy}
 \fancypagestyle{plain}{}
 \setlength{\headheight}{0cm}
-\fancyhead[L]{\textsf{\scriptsize todo table for align: (2.25)Открытый вариант -- ФИЗИКА(11.3) -- 2/8(13.45)}}
-\fancyhead[R]{\textsf{\scriptsize Открытый вариант(1.9)}}
+\fancyhead[L]{\textsf{\scriptsize 
+	\begin{tabular}{L{4.2cm} R{4.2cm} R{1.9cm}}
+		\hspace{-0.1cm}Открытый вариант & ФИЗИКА & 2/8
+	\end{tabular}
+}}
+\fancyhead[R]{\textsf{\scriptsize Открытый вариант\hspace{0.4cm}}}
 \fancyfoot[L]{
 	\hspace{0.5cm}
 	%\framebox[11.5cm]{
