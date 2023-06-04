@@ -5,8 +5,7 @@
 \usepackage{soul}
 \usepackage{pgf,tikz,pgfplots}
 \usepackage{wrapfig,graphicx}
-\usepackage{fancyhdr}
-\usepackage{array}
+\usepackage{fancyhdr,lastpage,array}
 \usepackage{multirow,multicol,enumitem}
 \usepackage[top=2.5cm, bottom=2cm, left=2.2cm, right=1.5cm]{geometry}
 
@@ -45,34 +44,38 @@
 \newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
 
 
+\title{Открытый вариант}
+\author{ФИЗИКА}
+
 
 \begin{document}
 
+\makeatletter
 \pagestyle{fancy}
 \fancypagestyle{plain}{}
 \setlength{\headheight}{0cm}
 \fancyhead[L]{\textsf{\scriptsize 
 	\begin{tabular}{L{4.2cm} R{4.2cm} R{1.9cm}}
-		\hspace{-0.1cm}Открытый вариант & ФИЗИКА & 2/8
+		\hspace{-0.1cm}\@title & \@author & \thepage/\pageref{LastPage}
 	\end{tabular}
 }}
-\fancyhead[R]{\textsf{\scriptsize Открытый вариант\hspace{0.4cm}}}
+\fancyhead[R]{\textsf{\scriptsize \@title\hspace{0.4cm}}}
 \fancyfoot[L]{
 	\hspace{0.5cm}
-	%\framebox[11.5cm]{
-		\begin{minipage}[l]{11.5cm}
-			\center{
-				\textsf{
-					\tiny
-					(C) 2023 Федеральная служба по надзору в сфере образования и науки
-					\\[-0.2cm]
-					Копирование \textbf{не допускается}
-				}
+	\begin{minipage}[l]{11.5cm}
+		\center{
+			\textsf{
+				\tiny
+				(C) 2023 Федеральная служба по надзору в сфере образования и науки
+				\\[-0.2cm]
+				Копирование \textbf{не допускается}
 			}
-		\end{minipage}
-	%}
+		}
+	\end{minipage}
 }
 \fancyfoot[C]{}
+\makeatother
+
 
 \center{\textbf{Часть 1}}
 
