@@ -1,0 +1,175 @@
+\documentclass[10pt,a4paper,twocolumn,landscape]{article}
+
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amssymb,mathspec}
+\usepackage{soul}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{wrapfig,graphicx}
+\usepackage{fancyhdr,lastpage,array}
+\usepackage{multirow,multicol,enumitem}
+\usepackage[top=2.5cm, bottom=2cm, left=2.2cm, right=1.5cm]{geometry}
+\usepackage{pgffor}
+\usepackage{makecell}
+
+
+% Set fonts
+%\setmainfont{Times New Roman}
+\setmainfont[Scale=1]{PT Serif}
+%\setmathrm[Scale=0.8]{Cascadia Code PL} % for \sin, \cos, ...
+\usepackage[euler-digits,euler-hat-accent]{eulervm}
+\usepackage[mathscr]{euscript}
+\setallsansfonts{PT Sans}
+\setallmonofonts[Scale=0.95]{PT Mono}
+
+\setlist[enumerate]{nosep}
+
+\everymath{\displaystyle}
+\newcommand{\Z}{\mathcal{Z}}
+\newcommand{\Q}{\mathcal{Q}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\No}{\mathcal{N}_0}
+\newcommand{\R}{\mathcal{R}}
+
+\pgfplotsset{compat=newest}
+
+\setlength{\parindent}{0cm}
+
+\setlength{\columnsep}{2.5cm}
+\setlength{\columnwidth}{11.3cm}
+
+\renewcommand{\headrulewidth}{0cm}
+\renewcommand{\footrulewidth}{0cm}
+\renewcommand{\headruleskip}{0.6cm}
+\renewcommand{\footruleskip}{0cm}
+
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+
+
+% \createpart{2} -> Часть 2
+\newcommand{\createpart}[1]{ \center{\textbf{Часть #1}} }
+
+% \createtask{2}{text} -> [2] text
+\newcommand{\createtask}[2]{
+	\hspace{-1.3cm}
+	\begin{tabular}{c l}
+		\framebox[0.85cm]{\textbf{#1}}\hspace{-0.15cm} &
+		\begin{minipage}[t]{11.25cm}
+			#2
+		\end{minipage}
+	\end{tabular}
+	\phantom{1}
+}
+
+% \blankanswer -> [4.5cm] line
+\newcommand{\blankanswer}{ \underline{\hspace{4.5cm}} }
+
+% \partbox{text} -> [text]
+\newcommand{\partbox}[1]{
+	\hspace{-0.3cm}
+	\framebox[11.5cm]{
+		\begin{minipage}[l]{11.2cm}
+			\vspace{-1em}\phantom{1}\\
+			\textit{\textbf{ #1 }}
+			\vspace{-0.1cm}
+		\end{minipage}
+	}
+	\phantom{1}
+}
+
+% \createheaders -> set up fancyhdr
+\makeatletter
+\newcommand{\createheaders}{
+	\raggedbottom
+	\pagestyle{fancy}
+	\fancypagestyle{plain}{}
+	\setlength{\headheight}{0cm}
+	\fancyhead[L]{
+		\scriptsize
+		\textsf{ 
+			\begin{tabular}{L{4.2cm} R{4.2cm} R{1.9cm}}
+				\hspace{-0.1cm}\@title & \@author & \thepage/\pageref{LastPage}
+			\end{tabular}
+		}
+	}
+	\fancyhead[R]{\textsf{\scriptsize \@title\hspace{0.4cm}}}
+	\fancyfoot[L]{
+		\hspace{0.5cm}
+		\begin{minipage}[l]{11.5cm}
+			\center{
+				\textsf{
+					\tiny
+					(C) 2023 Федеральная служба по надзору в сфере образования и науки
+					\\[-0.2cm]
+					Копирование \textbf{не допускается}
+				}
+			}
+		\end{minipage}
+	}
+	\fancyfoot[C]{}
+}
+\makeatother
+
+% \separ -> 1cm
+\newcommand{\separ}{\vspace{1em}}
+
+% \sepline -> 1em
+\newcommand{\sepline}{\vspace{1em}}
+
+
+
+\title{Открытый вариант}
+\author{ХИМИЯ}
+
+
+\begin{document}
+
+\createheaders
+
+\createpart{1}
+\partbox{
+	Ответами к заданиям 1--28 являются число или последовательность
+	цифр. Ответ запишите в поле ответа в тексте работы, а затем
+	перенесите в БЛАНК ОТВЕТОВ № 1 справа от номера
+	соответствующего задания, начиная с первой клеточки. Каждый символ
+	пишите в отдельной клеточке в соответствии с приведёнными в бланке
+	образцами. Цифры в заданиях 7, 8, 10, 14, 15, 19, 20, 22, 23, 24, 25 могут повторяться.
+}
+\separ
+
+\input{chem/part1box}
+\separ
+\\
+\foreach \num in {1, 2, ..., 28}{
+\createtask{\num}{\input{chem/task-\num}}\\
+\separ}
+
+\separ
+
+\separ
+
+\partbox{
+	В бланк ответов № 1 перенесите только числа, не разделяя их пробелом
+	или другим знаком.
+}
+
+\pagebreak
+
+\createpart{2}
+\\
+\partbox{
+	Для записи ответов на задания 24--30 используйте БЛАНК
+	ОТВЕТОВ № 2. Запишите сначала номер задания (24, 25 и т.д.), а затем
+	решение соответствующей задачи. Ответы записывайте чётко
+	и разборчиво.	
+}
+\separ
+\\
+\foreach \num in {29, 30, ..., 34}{
+\createtask{\num}{\input{chem/task-\num}}\\
+\separ}
+
+
+\end{document}
