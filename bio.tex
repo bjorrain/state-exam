@@ -1,6 +1,8 @@
 \documentclass[10pt,a4paper,twocolumn,landscape]{article}
 
-\usepackage[english,russian]{babel}
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setotherlanguage{english}
 \usepackage{amsmath,amssymb,mathspec}
 \usepackage{soul}
 \usepackage{pgf,tikz,pgfplots}
@@ -10,7 +12,9 @@
 \usepackage[top=2.5cm, bottom=2cm, left=2.2cm, right=1.5cm]{geometry}
 \usepackage{pgffor}
 \usepackage{makecell}
-
+\usepackage{graphicx}
+\usepackage{enumitem}
+\graphicspath{ {./bio/images/} }
 
 % Set fonts
 %\setmainfont{Times New Roman}
@@ -41,6 +45,7 @@
 \renewcommand{\footrulewidth}{0cm}
 \renewcommand{\headruleskip}{0.6cm}
 \renewcommand{\footruleskip}{0cm}
+\renewcommand{\theenumii}{\Asbuk{enumi}}
 
 \newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
 \newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
@@ -49,13 +54,13 @@
 
 
 % \createpart{2} -> Часть 2
-\newcommand{\createpart}[1]{ \center{\textbf{Часть #1}} }
+\newcommand{\createpart}[1]{ \center{\textsf{\textbf{Часть #1}}} }
 
 % \createtask{2}{text} -> [2] text
 \newcommand{\createtask}[2]{
 	\hspace{-1.3cm}
 	\begin{tabular}{c l}
-		\framebox[0.85cm]{\textbf{#1}}\hspace{-0.15cm} &
+		\framebox[0.85cm]{\textsf{\textbf{#1}}}\hspace{-0.15cm} &
 		\begin{minipage}[t]{11.25cm}
 			#2
 		\end{minipage}
@@ -72,12 +77,24 @@
 	\framebox[11.5cm]{
 		\begin{minipage}[l]{11.2cm}
 			\vspace{-1em}\phantom{1}\\
-			\textit{\textbf{ #1 }}
+			\textsf{\textit{\textbf{ #1 }}}
 			\vspace{-0.1cm}
 		\end{minipage}
 	}
 	\phantom{1}
 }
+
+\newcommand{\taskbox}[1]{
+	\hspace{-0.3cm}
+	\framebox[11.5cm]{
+		\begin{minipage}[l]{11.2cm}
+			\vspace{-1em}\phantom{1}\\
+			\textsf{ #1 }
+			\vspace{-0.1cm}
+		\end{minipage}
+	}
+	\phantom{1}
+}	
 
 % \createheaders -> set up fancyhdr
 \makeatletter
@@ -101,9 +118,9 @@
 			\center{
 				\textsf{
 					\tiny
-					(C) 2023 Федеральная служба по надзору в сфере образования и науки
+					Создано командой 4GIA - с любовью.
 					\\[-0.2cm]
-					Копирование \textbf{не допускается}
+					Копирование \textbf{допускается}
 				}
 			}
 		\end{minipage}
@@ -126,6 +143,72 @@
 
 \begin{document}
 
+\begin{center}
+	\textsf{\textbf{Единый государственный экзамен по БИОЛОГИИ \\
+	Инструкция по выполнению работы \\}}
+	\sepline
+	Экзаменационная работа состоит из двух частей, включающих в себя
+	29 заданий. Часть 1 содержит 22 задания с кратким ответом. Часть 2
+	содержит 7 заданий с развёрнутым ответом. \\
+	На выполнение экзаменационной работы по биологии отводится 3 часа
+	55 минут (235 минут). \\
+	Ответами к заданиям части 1 (1–22) являются последовательность
+	цифр, число или слово (словосочетание). Ответы запишите по приведённым
+	ниже \underline{образцам} в поле ответа в тексте работы без пробелов, запятых и других
+	дополнительных символов, а затем перенесите в бланк ответов № 1.
+
+
+\taskbox{
+\text{Ответ в КИМ:}
+\begin{tabular}{|c|c|}
+	\hline
+	3 & 5 \\
+	\hline
+\end{tabular} \text{Ответ в бланке:} \begin{tabular}{|c|c|c|c|c|}
+	\hline
+	3 & 5 & & &\\
+	\hline
+\end{tabular} \\ 
+\text{Ответ в КИМ:}
+	\begin{tabular}{|c|c|}
+		\hline
+		X & Y \\
+		\hline
+		3 & 5 \\
+		\hline
+	\end{tabular} \text{Ответ в бланке:} \begin{tabular}{|c|c|c|c|c|}
+		\hline
+		3 & 5 & & &\\
+		\hline
+		\end{tabular} \\
+\text{Ответ в КИМ:} \underline{   3,5    }
+\text{Ответ в бланке:} \begin{tabular}{|c|c|c|c|c|}
+			\hline
+			3 & , & 5 & &\\
+			\hline
+			\end{tabular} \\
+\text{Ответ в КИМ:} \underline{ЖЕЛЕЗА}
+\text{Ответ в бланке:} \begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			Ж & Е & Л & Е & З & А \\
+			\hline
+			\end{tabular} \\
+}
+\sepline \\
+Ответы к заданиям 29–34 включают в себя подробное описание всего хода выполнения задания. В бланке ответов № 2 укажите номер задания
+и запишите его полное решение. \\
+Все бланки ЕГЭ заполняются яркими чёрными чернилами.
+Допускается использование гелевой или капиллярной ручки. \\
+При выполнении заданий можно пользоваться черновиком. \textbf{Записи
+в черновике, а также в тексте контрольных измерительных материалов
+не учитываются при оценивании работы.} \\ 
+При выполнении работы используйте Периодическую систему химических элементов Д.И. Менделеева, таблицу растворимости солей, кислот и оснований в воде, электрохимический ряд напряжений металлов. Эти сопроводительные материалы прилагаются к тексту работы.\\ 
+Для вычислений используйте непрограммируемый калькулятор. \\
+Баллы, полученные Вами за выполненные задания, суммируются. Постарайтесь выполнить как можно больше заданий и набрать наибольшее количество баллов. \\
+После завершения работы проверьте, чтобы ответ на каждое задание в бланках ответов № 1 и № 2 был записан под правильным номером. \\
+\textit{\textsf{\textbf{Желаем успеха!}}}
+\end{center}
+			
 \createheaders
 
 \createpart{1}
@@ -139,21 +222,32 @@
 }
 \separ
 
-\input{chem/part1box}
-\separ
-\\
-\foreach \num in {1, 2, ..., 21}{
+
+\foreach \num in {1, 2, 3, 4}{
 \createtask{\num}{\input{bio/task-\num}}\\
 \separ}
+\partbox{
+	Рассмотрите рисунок и выполните задания 5 и 6. \\
+		\includegraphics[height=6cm, width=8cm]{bio/images/cell.jpg}
+} \\ \separ 
+\foreach \num in {5, 6, ..., 12}{
+\createtask{\num}{\input{bio/task-\num}}\\
+\separ}
+\partbox{
+	Рассмотрите рисунок и выполните задания 13 и 14. \\
+		\includegraphics[height=6cm, width=8cm]{bio/images/cell.jpg}
+} \\ \separ
 
-\separ
+\foreach \num in {13, 14, ..., 22}{
+\createtask{\num}{\input{bio/task-\num}}\\
+\separ}
 
 \separ
 
 \partbox{
 	В бланк ответов № 1 перенесите только числа, не разделяя их пробелом
 	или другим знаком.
-}
+} 
 
 \pagebreak
 
@@ -164,10 +258,16 @@
 	ОТВЕТОВ № 2. Запишите сначала номер задания (24, 25 и т.д.), а затем
 	решение соответствующей задачи. Ответы записывайте чётко
 	и разборчиво.	
-}
+} \\
 \separ
+\partbox{
+	Прочитайте описание эксперимента и выполните задания 23 и 24.
+}
 \\
-\foreach \num in {22, 23, ..., 29}{
+\separ
+\input{bio/23box}\\
+\separ 
+\foreach \num in {23, 24, ..., 29}{
 \createtask{\num}{\input{bio/task-\num}}\\
 \separ}
 

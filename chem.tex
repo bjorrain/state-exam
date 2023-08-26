@@ -1,7 +1,7 @@
 \documentclass[10pt,a4paper,twocolumn,landscape]{article}
 
 \usepackage[english,russian]{babel}
-\usepackage{amsmath,amssymb,mathspec}
+\usepackage{amsmath, unicode-math}
 \usepackage{soul}
 \usepackage{pgf,tikz,pgfplots}
 \usepackage{wrapfig,graphicx}
@@ -10,16 +10,17 @@
 \usepackage[top=2.5cm, bottom=2cm, left=2.2cm, right=1.5cm]{geometry}
 \usepackage{pgffor}
 \usepackage{makecell}
-
+\usepackage{qrcode}
+\usepackage{chemfig}
+\usepackage{firamath-otf}
+\usepackage{mathastext}
 
 % Set fonts
 %\setmainfont{Times New Roman}
 \setmainfont[Scale=1]{PT Serif}
-%\setmathrm[Scale=0.8]{Cascadia Code PL} % for \sin, \cos, ...
-\usepackage[euler-digits,euler-hat-accent]{eulervm}
+\setsansfont{PT Sans}
+%\usepackage[euler-digits,euler-hat-accent]{eulervm}
 \usepackage[mathscr]{euscript}
-\setallsansfonts{PT Sans}
-\setallmonofonts[Scale=0.95]{PT Mono}
 
 \setlist[enumerate]{nosep}
 
@@ -49,13 +50,13 @@
 
 
 % \createpart{2} -> Часть 2
-\newcommand{\createpart}[1]{ \center{\textbf{Часть #1}} }
+\newcommand{\createpart}[1]{ \center{\textsf{\textbf{Часть #1}}} }
 
 % \createtask{2}{text} -> [2] text
 \newcommand{\createtask}[2]{
 	\hspace{-1.3cm}
 	\begin{tabular}{c l}
-		\framebox[0.85cm]{\textbf{#1}}\hspace{-0.15cm} &
+		\framebox[0.85cm]{\textsf{\textbf{#1}}}\hspace{-0.15cm} &
 		\begin{minipage}[t]{11.25cm}
 			#2
 		\end{minipage}
@@ -72,13 +73,24 @@
 	\framebox[11.5cm]{
 		\begin{minipage}[l]{11.2cm}
 			\vspace{-1em}\phantom{1}\\
-			\textit{\textbf{ #1 }}
+			\textsf{\textit{\textbf{ #1 }}}
 			\vspace{-0.1cm}
 		\end{minipage}
 	}
 	\phantom{1}
 }
 
+\newcommand{\taskbox}[1]{
+	\hspace{-0.3cm}
+	\framebox[11.5cm]{
+		\begin{minipage}[l]{11.2cm}
+			\vspace{-1em}\phantom{1}\\
+			\textsf{ #1 }
+			\vspace{-0.1cm}
+		\end{minipage}
+	}
+	\phantom{1}
+}	
 % \createheaders -> set up fancyhdr
 \makeatletter
 \newcommand{\createheaders}{
@@ -90,7 +102,7 @@
 		\scriptsize
 		\textsf{ 
 			\begin{tabular}{L{4.2cm} R{4.2cm} R{1.9cm}}
-				\hspace{-0.1cm}\@title & \@author & \thepage/\pageref{LastPage}
+				\hspace{-0.1cm}\@title & \@author & \textsf{\thepage}/\textsf{\pageref{LastPage}}
 			\end{tabular}
 		}
 	}
@@ -99,10 +111,9 @@
 		\hspace{0.5cm}
 		\begin{minipage}[l]{11.5cm}
 			\center{
-				\textsf{
-					\tiny
-					(C) 2023 Федеральная служба по надзору в сфере образования и науки
-					\\[-0.2cm]
+				\textsf{ \tiny
+					© 2024 Федеральная служба по надзору в сфере образования и науки
+					\\[0.02cm]
 					Копирование \textbf{не допускается}
 				}
 			}
@@ -120,15 +131,74 @@
 
 
 
-\title{Открытый вариант}
-\author{ХИМИЯ}
+\title{\qrcode[height=1cm]{https://fourgia.t.me/} \textsf{ОТКРЫТЫЙ ВАРИАНТ}}
+\author{\textsf{ХИМИЯ -- 11 КЛАСС}}
 
 
 \begin{document}
 
+\begin{center}
+	\textsf{\textbf{Единый государственный экзамен по ХИМИИ \\
+	Инструкция по выполнению работы \\}}
+	\sepline
+	Экзаменационная работа состоит из двух частей, включающих в себя
+34 задания. Часть 1 содержит 28 заданий с кратким ответом, часть 2
+содержит 6 заданий с развёрнутым ответом. \\
+На выполнение экзаменационной работы по химии отводится 3,5 часа
+(210 минут). \\
+Ответом к заданиям части 1 является последовательность цифр или
+число. Ответ запишите по приведённым ниже образцам в поле ответа
+в тексте работы, а затем перенесите в бланк ответов № 1.
+Последовательность цифр в заданиях 1–28 запишите без пробелов, запятых
+и других дополнительных символов. \\
+
+\taskbox{
+\text{Ответ в КИМ:}
+\begin{tabular}{|c|c|}
+	\hline
+	3 & 5 \\
+	\hline
+\end{tabular} \text{Ответ в бланке:} \begin{tabular}{|c|c|c|c|c|}
+	\hline
+	3 & 5 & & &\\
+	\hline
+\end{tabular} \\ 
+\text{Ответ в КИМ:}
+	\begin{tabular}{|c|c|}
+		\hline
+		X & Y \\
+		\hline
+		3 & 5 \\
+		\hline
+	\end{tabular} \text{Ответ в бланке:} \begin{tabular}{|c|c|c|c|c|}
+		\hline
+		3 & 5 & & &\\
+		\hline
+		\end{tabular} \\
+\text{Ответ в КИМ:} \underline{   3,5    }
+\text{Ответ в бланке:} \begin{tabular}{|c|c|c|c|c|}
+			\hline
+			3 & , & 5 & &\\
+			\hline
+			\end{tabular} \\
+}
+\sepline \\
+Ответы к заданиям 29–34 включают в себя подробное описание всего хода выполнения задания. В бланке ответов № 2 укажите номер задания
+и запишите его полное решение. \\
+Все бланки ЕГЭ заполняются яркими чёрными чернилами.
+Допускается использование гелевой или капиллярной ручки. \\
+При выполнении заданий можно пользоваться черновиком. \textbf{Записи
+в черновике, а также в тексте контрольных измерительных материалов
+не учитываются при оценивании работы.} \\ 
+При выполнении работы используйте Периодическую систему химических элементов Д.И. Менделеева, таблицу растворимости солей, кислот и оснований в воде, электрохимический ряд напряжений металлов. Эти сопроводительные материалы прилагаются к тексту работы.\\ 
+Для вычислений используйте непрограммируемый калькулятор. \\
+Баллы, полученные Вами за выполненные задания, суммируются. Постарайтесь выполнить как можно больше заданий и набрать наибольшее количество баллов. \\
+После завершения работы проверьте, чтобы ответ на каждое задание в бланках ответов № 1 и № 2 был записан под правильным номером. \\
+\textit{\textsf{\textbf{Желаем успеха!}}}
+\end{center}
 \createheaders
 
-\createpart{1}
+\createpart{1} \\ \sepline
 \partbox{
 	Ответами к заданиям 1--28 являются число или последовательность
 	цифр. Ответ запишите в поле ответа в тексте работы, а затем
@@ -139,26 +209,27 @@
 }
 \separ
 
-\input{chem/part1box}
+\taskbox{\input{chem/part1box}}
 \separ
 \\
 \foreach \num in {1, 2, ..., 28}{
-\createtask{\num}{\input{chem/task-\num}}\\
-\separ}
+\createtask{\num}{\input{chem/task-\num}}\\}
 
 \separ
 
 \separ
 
 \partbox{
-	В бланк ответов № 1 перенесите только числа, не разделяя их пробелом
-	или другим знаком.
+	Не забудьте перенести все ответы в бланк ответов № 1
+в соответствии с инструкцией по выполнению работы.
+Проверьте, чтобы каждый ответ был записан в строке с номером
+соответствующего задания.
 }
 
 \pagebreak
 
 \createpart{2}
-\\
+\\ \sepline 
 \partbox{
 	Для записи ответов на задания 29--34 используйте БЛАНК
 	ОТВЕТОВ № 2. Запишите сначала номер задания (29, 30 и т.д.), а затем
@@ -167,9 +238,11 @@
 }
 \separ
 \\
+\taskbox{\input{chem/29box.tex}} \\
+\separ
 \foreach \num in {29, 30, ..., 34}{
-\createtask{\num}{\input{chem/task-\num}}\\
-\separ}
+\createtask{\num}{\input{chem/task-\num}}\\}
 
-
+\partbox{Проверьте, чтобы каждый ответ был записан рядом с номером
+соответствующего задания.}
 \end{document}
